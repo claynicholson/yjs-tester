@@ -4,13 +4,13 @@ const Y = require('yjs');
 
 const numClients = 10; 
 const docName = 'example-document';
-const serverUrl = 'ws://sprig.hackclub.com/~/beta/oXsxZroUntiRL9h7qo0I'; 
+const url = 'ws://sprig.hackclub.com/~/beta/oXsxZroUntiRL9h7qo0I'; 
 
 
-const simulateClients = (numClients, docName, serverUrl) => {
+const simulateClients = (numClients, docName, url) => {
     for (let i = 0; i < numClients; i++) {
         const doc = new Y.Doc();
-        const wsProvider = new WebsocketProvider(serverUrl, docName, doc, { WebSocketPolyfill: WebSocket });
+        const wsProvider = new WebsocketProvider(url, docName, doc, { WebSocketPolyfill: WebSocket });
 
         wsProvider.on('status', (event) => {
             console.log(`Client ${i} connection status: ${event.status}`);
